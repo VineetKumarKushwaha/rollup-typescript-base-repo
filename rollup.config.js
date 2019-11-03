@@ -13,7 +13,6 @@ import autoprefixer from 'autoprefixer';
 import { uglify } from "rollup-plugin-uglify";
 import cssnano from 'cssnano';
 
-
 const cleanUp = (options = {}) => {
   const {
     hook = 'buildStart',
@@ -30,9 +29,7 @@ const cleanUp = (options = {}) => {
           ? `Expected files and folders to be deleted: ${paths.length}`
           : `Deleted files and folders: ${paths.length}`
 
-        console.log("===============Clean Up Started============");
-		console.log(message);
-		console.log("===============Clean Up Done================");
+        console.log("clearing the build folder");
       }
     })
   }
@@ -67,7 +64,8 @@ export default {
 		json,
 		eslint({
 			include: ["src/**"],
-			exclude: ['src/**/*.css']
+			exclude: ['src/**/*.css'],
+			throwOnError: process.env.NODE_ENV === "production"
 		}),
 		postcss({
 			getJSON: (cssFileName, json, outputFileName) => {
@@ -87,8 +85,8 @@ export default {
 		typescriptRollup({
 			typescript,
 			"clean": true,
-			"verbosity": 2,
-			"abortOnError": false,
+			"verbosity": 0,
+			"abortOnError": process.env.NODE_ENV === "production",
 			"check": true
 		}),
 		babel({

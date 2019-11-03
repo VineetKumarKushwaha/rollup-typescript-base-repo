@@ -23,6 +23,11 @@
     "rules": {
       "@typescript-eslint/explicit-function-return-type": "off",
       "indent": ["error", 4],
-      "comma-dangle": ["error", "never"]
+      "comma-dangle": ["error", "never"],
+      "arrow-parens": "off",
+      "@typescript-eslint/no-explicit-any": ["warn", {
+        "fixToUnknown": true,
+        "ignoreRestArgs": true
+      }]
     }
 }

@@ -6,9 +6,7 @@
     (global = global || self, global.demo = factory());
 }(this, (function () { 'use strict';
 
-    var promiseSettled = function (args) {
-        return Promise.all(args.map(function (promise) { return promise.then(function (data) { return ({ data: data, isRejected: false }); }, function (error) { return ({ error: error, isRejected: true }); }); }));
-    };
+    var promiseSettled = function (args) { return Promise.all(args.map(function (promise) { return promise.then(function (data) { return ({ data: data, isRejected: false }); }, function (error) { return ({ error: error, isRejected: true }); }); })); };
     //# sourceMappingURL=PromiseSettled.js.map
 
     var style = {"someSelector":"css_someSelector__3u2nO"};
@@ -19,7 +17,6 @@
         someStyle: style.someSelector + styles.prefix,
         settled: promiseSettled
     };
-    //# sourceMappingURL=index.js.map
 
     return index;
 
