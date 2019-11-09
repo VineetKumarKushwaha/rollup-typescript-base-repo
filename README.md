@@ -1,1 +1,1 @@
-# Template with rollup, typescript, elslint, babel
+# Template with rollup, typescript, eslint, babel
